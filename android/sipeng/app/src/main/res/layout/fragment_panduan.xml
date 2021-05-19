@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.panduan.Panduan">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textSize="17dp"
+                android:fontFamily="@font/poppins"
+                android:textAlignment="center"
+                android:text="Syarat &amp; Ketentuan Berlaku:"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins"
+                android:textSize="16dp"
+                android:text="1. Pengguna Aplikasi harus mahasiswa terdaftar di Universitas Muhammadiyah Gorontalo."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins"
+                android:textSize="16dp"
+                android:text="2. Untuk daftar akun aplikasi silahkan ke bagian admin akademik Universitas Muhammadiyah Gorontalo."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins"
+                android:textSize="16dp"
+                android:text="3. Diharapkan pengguna harus menggunakan bahasa yang baik dan sopan saat mengirim pengaduan."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"
+                android:text="4. Pengaduan akan diproses pada jam hari kerja (senin - jumat)."/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/poppins"
+                android:text="5. Apabila terdapat kendala dalam penggunaan aplikasi silahkan melaporkan ke bagian admin akademik."/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

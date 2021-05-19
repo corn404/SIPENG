@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.umgo.sipeng.ui.fragments.home.Home"
+        android:label="DASHBOARD"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_panduan"
+            app:destination="@id/panduan" />
+        <action
+            android:id="@+id/action_home_to_pengaduan"
+            app:destination="@id/pengaduan" />
+        <action
+            android:id="@+id/action_home_to_tentang"
+            app:destination="@id/tentang" />
+        <action
+            android:id="@+id/action_home_to_akun2"
+            app:destination="@id/akun" />
+    </fragment>
+    <fragment
+        android:id="@+id/panduan"
+        android:name="com.umgo.sipeng.ui.fragments.panduan.Panduan"
+        android:label="Panduan Aplikasi"
+        tools:layout="@layout/fragment_panduan" >
+        <action
+            android:id="@+id/action_panduan_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/pengaduan"
+        android:name="com.umgo.sipeng.ui.fragments.pengaduan.Pengaduan"
+        android:label="Daftar Pengaduan"
+        tools:layout="@layout/fragment_pengaduan" >
+        <action
+            android:id="@+id/action_pengaduan_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/tentang"
+        android:name="com.umgo.sipeng.ui.fragments.tentang.Tentang"
+        android:label="Tentang Aplikasi"
+        tools:layout="@layout/fragment_tentang" >
+        <action
+            android:id="@+id/action_tentang_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/akun"
+        android:name="com.umgo.sipeng.ui.fragments.akun.Akun"
+        android:label="Edit Akun"
+        tools:layout="@layout/fragment_akun" >
+        <action
+            android:id="@+id/action_akun2_to_home"
+            app:destination="@id/home" />
+    </fragment>
+</navigation>

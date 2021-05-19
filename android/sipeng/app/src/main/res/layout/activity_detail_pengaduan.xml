@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="16dp"
+    tools:context=".ui.DetailPengaduan">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/foto_pengaduan"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_fakultas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fakultas : Nama Fakultas"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_color"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/text_kategori"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kategori : Nama Kategori"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_color"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi"
+            android:fontFamily="@font/poppins"
+            android:textAlignment="center"
+            android:textColor="@color/text_color"/>
+
+        <TextView
+            android:id="@+id/text_deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Isi deskripsi pengaduan"
+            android:fontFamily="@font/poppins"
+            android:textAlignment="center"
+            android:textColor="@color/text_color"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/card_balasan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Balasan dari admin"
+            android:fontFamily="@font/poppins"
+            android:textAlignment="center"
+            android:textColor="@color/text_color"/>
+
+        <TextView
+            android:id="@+id/text_balasan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Isi pesan balasan dari admin"
+            android:fontFamily="@font/poppins"
+            android:textAlignment="center"
+            android:textColor="@color/text_color"/>
+
+    </LinearLayout>
+</LinearLayout>

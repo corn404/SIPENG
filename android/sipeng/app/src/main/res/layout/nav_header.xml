@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="#3498db">
+
+    <ImageView
+        android:id="@+id/photo_profile"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo_profile"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/text_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hermanto Lakoro"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/text_nim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NIM : 123456"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/text_fakultas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fakultas : ILMU KOMPUTER"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/white" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Prodi : FIKOM"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="12sp"-->
+<!--            android:textColor="@color/white" />-->
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
