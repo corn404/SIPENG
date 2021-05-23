@@ -22,6 +22,9 @@ export const GET_MAHASISWA = "GET_MAHASISWA";
 // pengaduan
 export const GET_PENGADUAN = "GET_PENGADUAN";
 
+// prodi
+export const GET_PRODI = "GET_PRODI";
+
 export const Message = Swal.mixin({
   toast: true,
   position: "top-end",

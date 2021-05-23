@@ -18,14 +18,7 @@ exports.seed = async (knex) => {
       // Inserts seed entries
       return knex(tableName.users).insert([
         {
-          nama_lengkap: "email@gmail.com",
-          username: "hermandev",
-          password: password,
-          role: "admin",
-          id_pengguna: 0,
-        },
-        {
-          nama_lengkap: "email@gmail.com",
+          nama_lengkap: "admin",
           username: "admin",
           password: password,
           role: "admin",

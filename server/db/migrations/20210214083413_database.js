@@ -29,7 +29,7 @@ exports.up = async (knex) => {
       table.string("nama").notNullable();
       table.enum("kelamin", ["L", "P"]).notNullable();
       table.string("alamat").nullable();
-      table.integer("id_fakultas").notNullable();
+      table.integer("id_prodi").notNullable();
     })
     .createTable(tableName.fakultas, (table) => {
       table.increments("id").notNullable();
@@ -48,7 +48,7 @@ exports.up = async (knex) => {
       table.increments("id").notNullable();
       table.dateTime("tgl_pengaduan").notNullable();
       table.integer("id_kategori").notNullable();
-      table.integer("id_fakultas").notNullable();
+      table.integer("id_prodi").notNullable();
       table.integer("id_pengadu").notNullable();
       table.text("keterangan").nullable();
       table.text("balasan").nullable();

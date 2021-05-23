@@ -12,12 +12,14 @@ import { IoEye, IoReload, IoTrash } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteMahasiswa,
   getMahasiswa,
   getMahasiswaFakultas,
   resetPassword,
 } from "src/redux/actions/mahasiswa";
 import ModalTambah from "./ModelTambah";
 import ModalInfo from "./ModalInfo";
+import { Message } from "src/redux/actions";
 
 const Mahasiswa = () => {
   const [modal, setModal] = useState(false);
@@ -76,7 +78,20 @@ const Mahasiswa = () => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        // dispatch(deleteKategori(id));
+        deleteMahasiswa(id, (err, res) => {
+          if (res) {
+            Message.fire({
+              icon: "success",
+              title: "Data mahasiswa berhasil dihapus",
+            });
+            dispatch(getMahasiswaFakultas(users.id_fakultas));
+          } else {
+            Message.fire({
+              icon: "error",
+              title: "Ada masalah pada server, silahkan hubungi admin",
+            });
+          }
+        });
       }
     });
   };
@@ -153,7 +168,7 @@ const Mahasiswa = () => {
                       color="danger"
                       size="sm"
                       style={{ margin: 5 }}
-                      onClick={() => handleHapus(item.uuid)}
+                      onClick={() => handleHapus(item.id)}
                     >
                       <IoTrash />
                     </CButton>

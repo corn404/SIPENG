@@ -5,6 +5,7 @@ import {
   IoList,
   IoNewspaperOutline,
   IoPeopleOutline,
+  IoSchool,
 } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
@@ -40,6 +41,13 @@ const _nav = [
     name: "Fakultas",
     to: "/admin/fakultas",
     icon: <IoBookOutline className="c-sidebar-nav-icon" />,
+  },
+
+  {
+    _tag: "CSidebarNavItem",
+    name: "Prodi",
+    to: "/admin/prodi",
+    icon: <IoSchool className="c-sidebar-nav-icon" />,
   },
 
   {

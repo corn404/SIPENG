@@ -13,12 +13,18 @@ const GetMahasiswa = async (req, res, next) => {
         `${tableName.mahasiswa}.nama`,
         `${tableName.mahasiswa}.kelamin`,
         `${tableName.mahasiswa}.alamat`,
-        `${tableName.mahasiswa}.id_fakultas`,
-        `${tableName.fakultas}.nama_fakultas`
+        `${tableName.mahasiswa}.id_prodi`,
+        `${tableName.fakultas}.nama_fakultas`,
+        `${tableName.prodi}.nama_prodi`
+      )
+      .join(
+        tableName.prodi,
+        `${tableName.mahasiswa}.id_prodi`,
+        `${tableName.prodi}.id`
       )
       .join(
         tableName.fakultas,
-        `${tableName.mahasiswa}.id_fakultas`,
+        `${tableName.prodi}.id_fakultas`,
         `${tableName.fakultas}.id`
       );
     return WebResponse(res, 200, "Success", data);
@@ -38,7 +44,7 @@ const GetMahasiswaByFakultas = async (req, res, next) => {
         `${tableName.mahasiswa}.nama`,
         `${tableName.mahasiswa}.kelamin`,
         `${tableName.mahasiswa}.alamat`,
-        `${tableName.mahasiswa}.id_fakultas`,
+        `${tableName.mahasiswa}.id_prodi`,
         `${tableName.fakultas}.nama_fakultas`
       )
       .join(
@@ -114,6 +120,11 @@ const LoginMahasiswa = async (req, res, next) => {
             `${tableName.mahasiswa}.id`
           )
           .join(
+            tableName.prodi,
+            `${tableName.mahasiswa}.id_prodi`,
+            `${tableName.prodi}.id`
+          )
+          .join(
             tableName.fakultas,
             `${tableName.mahasiswa}.id_fakultas`,
             `${tableName.fakultas}.id`
@@ -157,10 +168,27 @@ const ResetPassword = async (req, res, next) => {
   }
 };
 
+const HapusMahasiswa = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const del = await db(tableName.users)
+      .where({ role: "mahasiswa" })
+      .andWhere({ id_pengguna: id })
+      .del();
+    if (del) {
+      await db(tableName.mahasiswa).where({ id }).del();
+      return WebResponse(res, 200, "Deleted", del);
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   GetMahasiswa,
   CreateMahasiswa,
   LoginMahasiswa,
   ResetPassword,
   GetMahasiswaByFakultas,
+  HapusMahasiswa,
 };

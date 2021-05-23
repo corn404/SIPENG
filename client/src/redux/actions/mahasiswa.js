@@ -87,3 +87,20 @@ export const resetPassword = (id, nim) => async (dispatch) => {
     });
   }
 };
+
+export const deleteMahasiswa = async (id, done) => {
+  try {
+    const del = await axios.delete(`${BASE_URL}/mahasiswa/${id}`);
+    if (del.data.status === "Deleted") {
+      return done(false, true);
+    } else {
+      return done(true, false);
+    }
+  } catch (error) {
+    Message.fire({
+      icon: "error",
+      title: "Ada masalah pada server, silahkan hubungi admin",
+    });
+    return done(true, false);
+  }
+};
