@@ -1,7 +1,7 @@
 import { GET_PRODI } from "../actions";
 
 const intialState = {
-  data: [],
+  prodi: [],
 };
 
 const Prodi = (state = intialState, action) => {
@@ -9,7 +9,7 @@ const Prodi = (state = intialState, action) => {
     case GET_PRODI: {
       return {
         ...state,
-        data: action.data,
+        prodi: action.data,
       };
     }
 

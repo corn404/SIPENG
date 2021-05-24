@@ -24,7 +24,7 @@ const GetProdi = async (req, res, next) => {
       .select(
         `${tableName.prodi}.id`,
         `${tableName.prodi}.nama_prodi`,
-        `${tableName.prodi}.id_fakutlas`,
+        `${tableName.prodi}.id_fakultas`,
         `${tableName.fakultas}.nama_fakultas`
       )
       .join(

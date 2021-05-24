@@ -10,17 +10,17 @@ import {
 } from "@coreui/react";
 import ModalTambah from "./ModalTambah";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteFakultas, getFakultas } from "src/redux/actions/fakultas";
 import { IoEye, IoTrash } from "react-icons/io5";
 import Swal from "sweetalert2";
 import ModalUpdate from "./ModalUpdate";
+import { getProdi } from "src/redux/actions/prodi";
 
 const Fakultas = () => {
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const [modalUpdate, setModalUpdate] = useState(false);
   const [item, setItem] = useState(null);
-  const dataFakultas = useSelector((x) => x.fakultas.fakultas);
+  const dataProdi = useSelector((x) => x.prodi.prodi);
 
   const columns = [
     { key: "no", label: "NO", _style: { width: "50px" } },
@@ -40,7 +40,7 @@ const Fakultas = () => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(deleteFakultas(id));
+        // dispatch(deleteFakultas(id));
       }
     });
   };
@@ -51,7 +51,7 @@ const Fakultas = () => {
   };
 
   useEffect(() => {
-    dispatch(getFakultas());
+    dispatch(getProdi());
   }, []);
 
   return (
@@ -77,7 +77,7 @@ const Fakultas = () => {
         </CCardHeader>
         <CCardBody>
           <CDataTable
-            items={dataFakultas}
+            items={dataProdi}
             fields={columns}
             itemsPerPageSelect
             itemsPerPage={5}

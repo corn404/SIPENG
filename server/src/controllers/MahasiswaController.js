@@ -45,11 +45,17 @@ const GetMahasiswaByFakultas = async (req, res, next) => {
         `${tableName.mahasiswa}.kelamin`,
         `${tableName.mahasiswa}.alamat`,
         `${tableName.mahasiswa}.id_prodi`,
-        `${tableName.fakultas}.nama_fakultas`
+        `${tableName.fakultas}.nama_fakultas`,
+        `${tableName.prodi}.nama_prodi`
+      )
+      .join(
+        tableName.prodi,
+        `${tableName.mahasiswa}.id_prodi`,
+        `${tableName.prodi}.id`
       )
       .join(
         tableName.fakultas,
-        `${tableName.mahasiswa}.id_fakultas`,
+        `${tableName.prodi}.id_fakultas`,
         `${tableName.fakultas}.id`
       );
     return WebResponse(res, 200, "Success", data);
@@ -59,7 +65,7 @@ const GetMahasiswaByFakultas = async (req, res, next) => {
 };
 
 const CreateMahasiswa = async (req, res, next) => {
-  const { nim, nama, kelamin, alamat, id_fakultas } = req.body;
+  const { nim, nama, kelamin, id_prodi } = req.body;
   try {
     const checkNim = await db(tableName.mahasiswa).where({ nim });
 
@@ -73,8 +79,7 @@ const CreateMahasiswa = async (req, res, next) => {
       nim,
       nama,
       kelamin,
-      alamat,
-      id_fakultas,
+      id_prodi,
     });
 
     const createUser = await db(tableName.users).insert({

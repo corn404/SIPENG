@@ -21,12 +21,12 @@ import Swal from "sweetalert2";
 
 const ModalTambah = ({ modal, setModal }) => {
   const dispatch = useDispatch();
-  const dataFakultas = useSelector((x) => x.fakultas.fakultas);
+  const dataProdi = useSelector((x) => x.prodi.prodi);
   const [nama, setNama] = useState("");
   const [nim, setNim] = useState("");
   const [kelamin, setKelamin] = useState("");
   const [alamat, setAlamat] = useState("");
-  const [fakultas, setFakultas] = useState(0);
+  const [prodi, setProdi] = useState(0);
 
   const handleTambah = () => {
     if (nim === "") {
@@ -35,17 +35,14 @@ const ModalTambah = ({ modal, setModal }) => {
       pesanError("Nama masih kosong");
     } else if (kelamin === "") {
       pesanError("Kelamin belum dipilih");
-    } else if (alamat === "") {
-      pesanError("Alamat masih kosong");
-    } else if (fakultas === 0) {
-      pesanError("Fakultas belum dipilih");
+    } else if (prodi === 0) {
+      pesanError("prodi belum dipilih");
     } else {
       const data = {
         nim,
         nama,
         kelamin,
-        alamat,
-        id_fakultas: fakultas,
+        id_prodi: prodi,
       };
       dispatch(addMahasiswa(data));
       setNama("");
@@ -132,7 +129,7 @@ const ModalTambah = ({ modal, setModal }) => {
             </CFormGroup>
           </CCol>
         </CRow>
-        <CRow>
+        {/* <CRow>
           <CCol xs="12">
             <CFormGroup>
               <CLabel htmlFor="alamat">Alamat</CLabel>
@@ -144,22 +141,22 @@ const ModalTambah = ({ modal, setModal }) => {
               />
             </CFormGroup>
           </CCol>
-        </CRow>
+        </CRow> */}
         <CRow>
           <CCol>
             <CFormGroup>
-              <CLabel htmlFor="fakultas">Fakultas</CLabel>
+              <CLabel htmlFor="prodi">Program Studi</CLabel>
               <CSelect
                 custom
-                name="fakultas"
-                id="fakultas"
-                value={fakultas}
-                onChange={(e) => setFakultas(e.target.value)}
+                name="prodi"
+                id="prodi"
+                value={prodi}
+                onChange={(e) => setProdi(e.target.value)}
               >
-                <option value="0">-- pilih fakultas --</option>
-                {dataFakultas.map((x, i) => (
+                <option value="0">-- pilih prodi --</option>
+                {dataProdi.map((x, i) => (
                   <option key={i} value={x.id}>
-                    {x.nama_fakultas}
+                    {x.nama_prodi}
                   </option>
                 ))}
               </CSelect>

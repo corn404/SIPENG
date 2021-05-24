@@ -54,7 +54,14 @@ const UserLogin = async (req, res, next) => {
                 `${tableName.users}.role`,
                 `${tableName.users}.id_pengguna`,
                 `${tableName.fakultas}.id as id_fakultas`,
-                `${tableName.fakultas}.nama_fakultas`
+                `${tableName.fakultas}.nama_fakultas`,
+                `${tableName.prodi}.id as id_prodi`,
+                `${tableName.prodi}.nama_prodi`
+              )
+              .join(
+                tableName.prodi,
+                `${tableName.users}.id_pengguna`,
+                `${tableName.prodi}.id`
               )
               .join(
                 tableName.fakultas,

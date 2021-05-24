@@ -37,6 +37,7 @@ const Mahasiswa = () => {
       _style: { textAlign: "center", width: "150px" },
     },
     { key: "nama_fakultas", label: "FAKULTAS" },
+    { key: "nama_prodi", label: "PRODI" },
     {
       key: "reset",
       label: "RESET PASSWORD",
