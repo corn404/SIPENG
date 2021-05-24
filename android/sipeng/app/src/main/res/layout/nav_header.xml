@@ -7,25 +7,35 @@
     android:layout_height="200dp"
     android:background="#3498db">
 
-    <ImageView
-        android:id="@+id/photo_profile"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_foto"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginTop="30dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/ic_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:cardCornerRadius="40dp">
+
+        <ImageView
+            android:id="@+id/photo_profile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_user"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/photo_profile"
+        app:layout_constraintTop_toBottomOf="@+id/card_foto"
         tools:ignore="MissingConstraints">
 
         <TextView

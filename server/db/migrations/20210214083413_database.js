@@ -20,6 +20,7 @@ exports.up = async (knex) => {
         .notNullable()
         .comment("1=aktif,2=blokir");
       table.string("id_pengguna").nullable();
+
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
     })
@@ -30,6 +31,7 @@ exports.up = async (knex) => {
       table.enum("kelamin", ["L", "P"]).notNullable();
       table.string("alamat").nullable();
       table.integer("id_prodi").notNullable();
+      table.text("foto").nullable();
     })
     .createTable(tableName.fakultas, (table) => {
       table.increments("id").notNullable();

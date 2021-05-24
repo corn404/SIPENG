@@ -116,6 +116,8 @@ const LoginMahasiswa = async (req, res, next) => {
             `${tableName.mahasiswa}.nama`,
             `${tableName.mahasiswa}.kelamin`,
             `${tableName.mahasiswa}.alamat`,
+            `${tableName.mahasiswa}.foto`,
+            `${tableName.prodi}.nama_prodi`,
             `${tableName.fakultas}.nama_fakultas`
             // `${tableName.fakultas}.nama_fakultas`,
           )
@@ -131,7 +133,7 @@ const LoginMahasiswa = async (req, res, next) => {
           )
           .join(
             tableName.fakultas,
-            `${tableName.mahasiswa}.id_fakultas`,
+            `${tableName.prodi}.id_fakultas`,
             `${tableName.fakultas}.id`
           )
           .where({ id_pengguna: checkUser[0].id_pengguna });
@@ -189,6 +191,40 @@ const HapusMahasiswa = async (req, res, next) => {
   }
 };
 
+const updateMahasiswa = async (req, res, next) => {
+  const { id, nama, kelamin, password } = req.body;
+  try {
+    if (password !== "") {
+      const salt = await bcrypt.genSaltSync(12);
+      const passwordHash = await bcrypt.hashSync(password, salt);
+      await db(tableName.users)
+        .where({ role: "mahasiswa" })
+        .andWhere({ id_pengguna: id })
+        .update({
+          password: passwordHash,
+        });
+    }
+    if (req.file !== undefined) {
+      const adFIle = await db(tableName.mahasiswa).where({ id }).update({
+        nama,
+        kelamin,
+        foto: req.file.filename,
+      });
+
+      return WebResponse(res, 200, "Updates", req.file.filename);
+    } else {
+      const noFIle = await db(tableName.mahasiswa).where({ id }).update({
+        nama,
+        kelamin,
+        id_prodi,
+      });
+      return WebResponse(res, 200, "Updated", noFIle);
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   GetMahasiswa,
   CreateMahasiswa,
@@ -196,4 +232,5 @@ module.exports = {
   ResetPassword,
   GetMahasiswaByFakultas,
   HapusMahasiswa,
+  updateMahasiswa,
 };

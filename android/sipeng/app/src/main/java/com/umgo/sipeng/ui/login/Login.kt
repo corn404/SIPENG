@@ -67,6 +67,7 @@ class Login : AppCompatActivity() {
                         val fakultas = jwt.getClaim("nama_fakultas").asString()
                         val alamat = jwt.getClaim("alamat").asString()
                         val role = jwt.getClaim("role").asString()
+                        val foto = jwt.getClaim("foto").asString()
 
                         login(
                             id_mahasiswa.toString(),
@@ -76,7 +77,8 @@ class Login : AppCompatActivity() {
                             alamat.toString(),
                             fakultas.toString(),
                             prodi = "",
-                            role.toString()
+                            role.toString(),
+                            foto.toString()
                         )
 
                     }
@@ -104,7 +106,8 @@ class Login : AppCompatActivity() {
         alamat: String,
         fakultas: String,
         prodi: String,
-        role: String
+        role: String,
+        foto: String
     ) {
         sharedUsers.let {
             it.id_mahasiswa = id_mahasiswa
@@ -116,6 +119,7 @@ class Login : AppCompatActivity() {
             it.role = role
             it.alamat = alamat
             it.isLogin = true
+            it.foto_profile = foto
         }
 
         loading.dismiss()

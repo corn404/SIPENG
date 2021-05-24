@@ -6,6 +6,7 @@ import com.umgo.sipeng.data.models.pengaduan.PengaduanListResponse
 import com.umgo.sipeng.data.models.pengaduan.PengaduanResponse
 import com.umgo.sipeng.data.models.users.LoginRequest
 import com.umgo.sipeng.data.models.users.LoginResponse
+import com.umgo.sipeng.data.models.users.ProfileResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -36,6 +37,13 @@ interface API {
     @GET("pengaduan/pengadu/{id_pengadu}")
     fun getPengaduan(@Path("id_pengadu") id_pengadu: Int) : Call<PengaduanListResponse>
 
+    @Multipart
+    @PUT("mahasiswa")
+    fun updateProfile(
+        @PartMap() map: HashMap<String, RequestBody>,
+        @Part file: MultipartBody.Part
+    ): Call<ProfileResponse>
+
 
 //    @Multipart
 //    @POST("upload")
@@ -45,8 +53,8 @@ interface API {
 //    ): Call<ResponseBody?>?
 
     companion object {
-        val BASE_URL = "http://192.168.43.217:5000/api/v1/"
-        val URL_SOCKETS = "http://192.168.43.217:5000"
+        val BASE_URL = "http://192.168.0.104:5000/api/v1/"
+        val URL_SOCKETS = "http://192.168.0.104:5000"
         operator fun invoke(): API {
             return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())

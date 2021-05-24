@@ -16,6 +16,7 @@ class SharedUsers(val context: Context) {
         private const val ID_PRODI = "ID_PRODI"
         private const val LOGIN = "LOGIN"
         private const val ROLE = "ROLE"
+        private const val FOTO = "FOTO"
     }
 
     private val data = PreferenceManager.getDefaultSharedPreferences(context)
@@ -53,4 +54,6 @@ class SharedUsers(val context: Context) {
     var role = data.getString(ROLE, "")
         set(value) = data.edit().putString(ROLE, value).apply()
 
+    var foto_profile = data.getString(FOTO, "")
+        set(value) = data.edit().putString(FOTO, value).apply()
 }

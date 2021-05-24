@@ -97,10 +97,6 @@ class PengaduanViewModel : ViewModel() {
             map["id_pengadu"] = pengadu
             map["keterangan"] = ket
 
-
-            println(map)
-
-
             API().kirimPengaduan(map, dataFoto).enqueue(object : Callback<PengaduanResponse> {
                 override fun onResponse(
                     call: Call<PengaduanResponse>,

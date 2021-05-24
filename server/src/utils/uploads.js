@@ -35,7 +35,7 @@ const uploadPengaduan = multer({
   //   dest: "src/public/uploads/",
   storage: storagePengaduan,
   limits: {
-    fileSize: 1024 * 1024 * 5,
+    fileSize: 1024 * 1024 * 10,
   },
   fileFilter: filterFile,
 });
@@ -44,7 +44,7 @@ const uploadProfile = multer({
   //   dest: "src/public/uploads/",
   storage: storageProfile,
   limits: {
-    fileSize: 1024 * 1024 * 5,
+    fileSize: 1024 * 1024 * 10,
   },
   fileFilter: filterFile,
 });
