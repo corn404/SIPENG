@@ -9,18 +9,24 @@ const GetPengaduan = async (req, res, next) => {
       .select(
         `${tableName.pengaduan}.id`,
         `${tableName.pengaduan}.tgl_pengaduan`,
-        `${tableName.pengaduan}.id_fakultas`,
+        `${tableName.fakultas}.id as id_fakultas`,
         `${tableName.fakultas}.nama_fakultas`,
         `${tableName.pengaduan}.id_kategori`,
         `${tableName.kategori}.kategori`,
         `${tableName.pengaduan}.keterangan`,
         `${tableName.pengaduan}.balasan`,
         `${tableName.pengaduan}.foto`,
-        `${tableName.pengaduan}.status`
+        `${tableName.pengaduan}.status`,
+        `${tableName.prodi}.nama_prodi`
+      )
+      .join(
+        tableName.prodi,
+        `${tableName.pengaduan}.id_prodi`,
+        `${tableName.prodi}.id`
       )
       .join(
         tableName.fakultas,
-        `${tableName.pengaduan}.id_fakultas`,
+        `${tableName.prodi}.id_fakultas`,
         `${tableName.fakultas}.id`
       )
       .join(
@@ -43,17 +49,24 @@ const GetPengaduanByPengadu = async (req, res, next) => {
       .select(
         `${tableName.pengaduan}.id`,
         `${tableName.pengaduan}.tgl_pengaduan`,
-        `${tableName.pengaduan}.id_fakultas`,
+        `${tableName.fakultas}.id as id_fakultas`,
         `${tableName.fakultas}.nama_fakultas`,
         `${tableName.pengaduan}.id_kategori`,
         `${tableName.kategori}.kategori`,
         `${tableName.pengaduan}.keterangan`,
         `${tableName.pengaduan}.balasan`,
-        `${tableName.pengaduan}.foto`
+        `${tableName.pengaduan}.foto`,
+        `${tableName.pengaduan}.status`,
+        `${tableName.prodi}.nama_prodi`
+      )
+      .join(
+        tableName.prodi,
+        `${tableName.pengaduan}.id_prodi`,
+        `${tableName.prodi}.id`
       )
       .join(
         tableName.fakultas,
-        `${tableName.pengaduan}.id_fakultas`,
+        `${tableName.prodi}.id_fakultas`,
         `${tableName.fakultas}.id`
       )
       .join(
@@ -75,17 +88,24 @@ const GetPengaduanByFakultas = async (req, res, next) => {
       .select(
         `${tableName.pengaduan}.id`,
         `${tableName.pengaduan}.tgl_pengaduan`,
-        `${tableName.pengaduan}.id_fakultas`,
+        `${tableName.fakultas}.id as id_fakultas`,
         `${tableName.fakultas}.nama_fakultas`,
         `${tableName.pengaduan}.id_kategori`,
         `${tableName.kategori}.kategori`,
         `${tableName.pengaduan}.keterangan`,
         `${tableName.pengaduan}.balasan`,
-        `${tableName.pengaduan}.foto`
+        `${tableName.pengaduan}.foto`,
+        `${tableName.pengaduan}.status`,
+        `${tableName.prodi}.nama_prodi`
+      )
+      .join(
+        tableName.prodi,
+        `${tableName.pengaduan}.id_prodi`,
+        `${tableName.prodi}.id`
       )
       .join(
         tableName.fakultas,
-        `${tableName.pengaduan}.id_fakultas`,
+        `${tableName.prodi}.id_fakultas`,
         `${tableName.fakultas}.id`
       )
       .join(

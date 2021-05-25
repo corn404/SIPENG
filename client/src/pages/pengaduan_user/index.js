@@ -33,6 +33,7 @@ const Pengaduan = () => {
     { key: "no", label: "NO", _style: { width: "50px" } },
     { key: "kategori", label: "KATEGORI", _style: { width: "200px" } },
     { key: "nama_fakultas", label: "FAKULTAS", _style: { width: "200px" } },
+    { key: "nama_prodi", label: "PRODI", _style: { width: "200px" } },
     { key: "keterangan", label: "DESKRIPSI" },
     { key: "foto", label: "FOTO", _style: { width: "100px" } },
     { key: "aksi", label: "AKSI", _style: { width: "100px" } },
