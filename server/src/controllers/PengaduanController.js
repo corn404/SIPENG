@@ -121,12 +121,12 @@ const GetPengaduanByFakultas = async (req, res, next) => {
 };
 
 const CreatePengaduan = async (req, res, next) => {
-  const { id_kategori, id_fakultas, id_pengadu, keterangan } = req.body;
+  const { id_kategori, id_prodi, id_pengadu, keterangan } = req.body;
   try {
     await db(tableName.pengaduan).insert({
       tgl_pengaduan: moment().format("yyyy-MM-DD"),
       id_kategori,
-      id_fakultas,
+      id_prodi,
       id_pengadu,
       keterangan,
       foto: req.file.filename,

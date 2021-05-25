@@ -20,6 +20,7 @@ import {
   addMahasiswa,
   addMahasiswaFakultas,
 } from "src/redux/actions/mahasiswa";
+import { getProdyByFakultas } from "src/redux/actions/prodi";
 import Swal from "sweetalert2";
 
 const ModalTambah = ({ modal, setModal }) => {
@@ -66,6 +67,7 @@ const ModalTambah = ({ modal, setModal }) => {
 
   useEffect(() => {
     dispatch(getFakultas());
+    dispatch(getProdyByFakultas(users.id_fakultas));
   }, []);
 
   return (

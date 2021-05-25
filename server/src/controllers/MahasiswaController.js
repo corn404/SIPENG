@@ -117,7 +117,9 @@ const LoginMahasiswa = async (req, res, next) => {
             `${tableName.mahasiswa}.kelamin`,
             `${tableName.mahasiswa}.alamat`,
             `${tableName.mahasiswa}.foto`,
+            `${tableName.prodi}.id as id_prodi`,
             `${tableName.prodi}.nama_prodi`,
+            `${tableName.fakultas}.id as id_fakultas`,
             `${tableName.fakultas}.nama_fakultas`
             // `${tableName.fakultas}.nama_fakultas`,
           )

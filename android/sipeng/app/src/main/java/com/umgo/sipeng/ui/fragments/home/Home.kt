@@ -111,21 +111,21 @@ class Home : Fragment(), UploadRequestBody.UploadCallback {
 //                }
 //            }
 
-            et_fakultas.setOnClickListener {
-                startActivityForResult(
-                    Intent(requireContext(), ListFakultas::class.java),
-                    FAKULTAS_REQUEST
-                )
-            }
-
-            et_fakultas.setOnFocusChangeListener { v, hasFocus ->
-                if (hasFocus) {
-                    startActivityForResult(
-                        Intent(requireContext(), ListFakultas::class.java),
-                        FAKULTAS_REQUEST
-                    )
-                }
-            }
+//            et_fakultas.setOnClickListener {
+//                startActivityForResult(
+//                    Intent(requireContext(), ListFakultas::class.java),
+//                    FAKULTAS_REQUEST
+//                )
+//            }
+//
+//            et_fakultas.setOnFocusChangeListener { v, hasFocus ->
+//                if (hasFocus) {
+//                    startActivityForResult(
+//                        Intent(requireContext(), ListFakultas::class.java),
+//                        FAKULTAS_REQUEST
+//                    )
+//                }
+//            }
 
             btn_upload.setOnClickListener {
                 Intent(Intent.ACTION_PICK).also {
@@ -170,7 +170,7 @@ class Home : Fragment(), UploadRequestBody.UploadCallback {
 
 
                 pengaduanViewModel.kirimPengaduan(
-                    ID_KATEGORI.toInt(), ID_FAKULTAS.toInt(), sharedUsers.id_mahasiswa!!.toInt(), et_deskripsi.text.toString(),
+                    ID_KATEGORI.toInt(), sharedUsers.id_prodi!!.toInt(), sharedUsers.id_mahasiswa!!.toInt(), et_deskripsi.text.toString(),
                     MultipartBody.Part.createFormData("foto", filename, requestFile)
                 )
                 pengaduanViewModel.listenMessage().observe(viewLifecycleOwner, Observer {
@@ -220,19 +220,19 @@ class Home : Fragment(), UploadRequestBody.UploadCallback {
             }
         }
 
-        if (requestCode == FAKULTAS_REQUEST) {
-            if (resultCode == Activity.RESULT_OK) {
-                ID_FAKULTAS = data?.getStringExtra("ID_FAKULTAS").toString()
-                NAMA_FAKULTAS = data?.getStringExtra("NAMA_FAKULTAS").toString()
-                et_fakultas.setText(NAMA_FAKULTAS)
-            }
-
-            if (resultCode == Activity.RESULT_CANCELED) {
-                ID_FAKULTAS = ""
-                NAMA_FAKULTAS = ""
-                et_fakultas.setText("")
-            }
-        }
+//        if (requestCode == FAKULTAS_REQUEST) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                ID_FAKULTAS = data?.getStringExtra("ID_FAKULTAS").toString()
+//                NAMA_FAKULTAS = data?.getStringExtra("NAMA_FAKULTAS").toString()
+//                et_fakultas.setText(NAMA_FAKULTAS)
+//            }
+//
+//            if (resultCode == Activity.RESULT_CANCELED) {
+//                ID_FAKULTAS = ""
+//                NAMA_FAKULTAS = ""
+//                et_fakultas.setText("")
+//            }
+//        }
 
         if (requestCode == PICKIMAGE_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {

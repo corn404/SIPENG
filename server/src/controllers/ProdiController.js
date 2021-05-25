@@ -39,4 +39,27 @@ const GetProdi = async (req, res, next) => {
   }
 };
 
-module.exports = { CreatedProdi, GetProdi };
+const GetProdiByFakultas = async (req, res, next) => {
+  const { id_fakultas } = req.params;
+  try {
+    const data = await db(tableName.prodi)
+      .select(
+        `${tableName.prodi}.id`,
+        `${tableName.prodi}.nama_prodi`,
+        `${tableName.prodi}.id_fakultas`,
+        `${tableName.fakultas}.nama_fakultas`
+      )
+      .join(
+        tableName.fakultas,
+        `${tableName.prodi}.id_fakultas`,
+        `${tableName.fakultas}.id`
+      )
+      .where({ id_fakultas });
+
+    return WebResponse(res, 200, "Success", data);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+module.exports = { CreatedProdi, GetProdi, GetProdiByFakultas };

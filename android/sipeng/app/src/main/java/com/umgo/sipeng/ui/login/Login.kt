@@ -64,7 +64,10 @@ class Login : AppCompatActivity() {
                         val nama = jwt.getClaim("nama_lengkap").asString()
                         val nim = jwt.getClaim("nim").asString()
                         val kelamin = jwt.getClaim("kelamin").asString()
+                        val id_fakultas = jwt.getClaim("id_fakultas").asString()
                         val fakultas = jwt.getClaim("nama_fakultas").asString()
+                        val id_prodi = jwt.getClaim("id_prodi").asString()
+                        val prodi = jwt.getClaim("nama_prodi").asString()
                         val alamat = jwt.getClaim("alamat").asString()
                         val role = jwt.getClaim("role").asString()
                         val foto = jwt.getClaim("foto").asString()
@@ -75,8 +78,10 @@ class Login : AppCompatActivity() {
                             nim.toString(),
                             kelamin.toString(),
                             alamat.toString(),
+                            id_fakultas = id_fakultas.toString(),
                             fakultas.toString(),
-                            prodi = "",
+                            id_prodi = id_prodi.toString(),
+                            prodi.toString(),
                             role.toString(),
                             foto.toString()
                         )
@@ -104,7 +109,9 @@ class Login : AppCompatActivity() {
         nim: String,
         kelamin: String,
         alamat: String,
+        id_fakultas: String,
         fakultas: String,
+        id_prodi: String,
         prodi: String,
         role: String,
         foto: String
@@ -120,6 +127,8 @@ class Login : AppCompatActivity() {
             it.alamat = alamat
             it.isLogin = true
             it.foto_profile = foto
+            it.id_prodi = id_prodi
+            it.id_fakultas = id_fakultas
         }
 
         loading.dismiss()

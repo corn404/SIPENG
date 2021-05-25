@@ -13,6 +13,18 @@ export const getProdi = () => async (dispatch) => {
   }
 };
 
+export const getProdyByFakultas = (id) => async (dispatch) => {
+  try {
+    const prodi = await axios.get(`${BASE_URL}/prodi/${id}`);
+    dispatch({ type: GET_PRODI, data: prodi.data.data });
+  } catch (error) {
+    Message.fire({
+      icon: "error",
+      title: "Ada masalah pada server, silahkan hubungi admin",
+    });
+  }
+};
+
 export const createdProdi = (nama_prodi, id_fakultas) => async (dispatch) => {
   try {
     const add = await axios.post(`${BASE_URL}/prodi`, {

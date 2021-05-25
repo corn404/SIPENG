@@ -76,7 +76,7 @@ class PengaduanViewModel : ViewModel() {
 
     fun kirimPengaduan(
         id_kategori: Int,
-        id_fakultas: Int,
+        id_prodi: Int,
         id_pengadu: Int,
         keterangan: String,
         dataFoto: MultipartBody.Part
@@ -87,13 +87,13 @@ class PengaduanViewModel : ViewModel() {
 
 
             val kategori = createPartFromString(id_kategori.toString())
-            val fakultas = createPartFromString(id_fakultas.toString())
+            val prodi = createPartFromString(id_prodi.toString())
             val pengadu = createPartFromString(id_pengadu.toString())
             val ket = createPartFromString(keterangan)
 
             val map: HashMap<String, RequestBody> = HashMap()
             map["id_kategori"] = kategori
-            map["id_fakultas"] = fakultas
+            map["id_prodi"] = prodi
             map["id_pengadu"] = pengadu
             map["keterangan"] = ket
 
