@@ -47,7 +47,7 @@ const ModalUpdate = ({ modal, setModal, item }) => {
         idPengguna !== 0
       ) {
         const data = {
-          uuid: uuid,
+          id: uuid,
           nama_lengkap: nama,
           username: username,
           password: password,
@@ -78,7 +78,7 @@ const ModalUpdate = ({ modal, setModal, item }) => {
   };
 
   useEffect(() => {
-    setUuid(item.uuid);
+    setUuid(item.id);
     setNama(item.nama_lengkap);
     setUsername(item.username);
     setPassword("");

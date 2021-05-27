@@ -62,4 +62,40 @@ const GetProdiByFakultas = async (req, res, next) => {
   }
 };
 
-module.exports = { CreatedProdi, GetProdi, GetProdiByFakultas };
+const UpdateProdi = async (req, res, next) => {
+  const { id, nama_prodi, id_fakultas } = req.body;
+  try {
+    const update = await db(tableName.prodi)
+      .update({
+        nama_prodi,
+        id_fakultas,
+      })
+      .where({ id });
+
+    if (update) {
+      return WebResponse(res, 201, "Updated");
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+const HapusProdi = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const del = await db(tableName.prodi).where({ id }).del();
+    if (del) {
+      return WebResponse(res, 200, "Deleted");
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+module.exports = {
+  CreatedProdi,
+  GetProdi,
+  GetProdiByFakultas,
+  UpdateProdi,
+  HapusProdi,
+};

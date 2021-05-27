@@ -34,7 +34,7 @@ const UserLogin = async (req, res, next) => {
         switch (checkUsername[0].role) {
           case "admin": {
             const dataAdmin = {
-              uuid: checkUsername[0].uuid,
+              id: checkUsername[0].id,
               nama_lengkap: checkUsername[0].nama_lengkap,
               username: checkUsername[0].username,
               role: checkUsername[0].role,
@@ -127,8 +127,8 @@ const UserRegister = async (req, res, next) => {
 };
 
 const UpdateUser = async (req, res, next) => {
-  const { uuid, username, password, role, nama_lengkap, id_pengguna } =
-    req.body;
+  const { id, username, password, role, nama_lengkap, id_pengguna } = req.body;
+  console.log(req.body);
   try {
     const salt = await bcrypt.genSaltSync(12);
     const hashPassword = await bcrypt.hashSync(password, salt);
@@ -141,7 +141,7 @@ const UpdateUser = async (req, res, next) => {
         role,
         id_pengguna,
       })
-      .where({ uuid });
+      .where({ id: id });
 
     return WebResponse(res, 201, "Updated", update);
   } catch (error) {
@@ -152,8 +152,7 @@ const UpdateUser = async (req, res, next) => {
 const HapusUser = async (req, res, next) => {
   const { uuid } = req.params;
   try {
-    const del = await db(tableName.users).where({ uuid }).del();
-    console.log(del);
+    const del = await db(tableName.users).where({ id: uuid }).del();
     if (del) {
       return WebResponse(res, 200, "Deleted", del);
     }

@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoEye, IoTrash } from "react-icons/io5";
 import Swal from "sweetalert2";
 import ModalUpdate from "./ModalUpdate";
-import { getProdi } from "src/redux/actions/prodi";
+import { getProdi, hapusProdi } from "src/redux/actions/prodi";
 
 const Fakultas = () => {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const Fakultas = () => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        // dispatch(deleteFakultas(id));
+        dispatch(hapusProdi(id));
       }
     });
   };

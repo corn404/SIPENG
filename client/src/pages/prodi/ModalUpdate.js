@@ -15,6 +15,7 @@ import {
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFakultas } from "src/redux/actions/fakultas";
+import { updateProdi } from "src/redux/actions/prodi";
 import Swal from "sweetalert2";
 
 const ModalUpdate = ({ modal, setModal, item }) => {
@@ -22,7 +23,9 @@ const ModalUpdate = ({ modal, setModal, item }) => {
   const [nama, setNama] = useState("");
   const [fakultas, setFakultas] = useState(0);
   const dataFakultas = useSelector((x) => x.fakultas.fakultas);
-  const [id, setId] = useState("");
+  const [id, setId] = useState(0);
+
+  // console.log(item);
 
   const handleTambah = () => {
     if (nama === "") {
@@ -30,7 +33,7 @@ const ModalUpdate = ({ modal, setModal, item }) => {
     } else if (fakultas === 0) {
       pesanError("fakultas belum dipilih");
     } else {
-      dispatch(updateFakultas(id, nama));
+      dispatch(updateProdi(id, nama, fakultas));
       setNama("");
       setModal(false);
     }
