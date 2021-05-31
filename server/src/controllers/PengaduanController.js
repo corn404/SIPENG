@@ -51,6 +51,7 @@ const GetPengaduan = async (req, res, next) => {
 
 const GetPengaduanByPengadu = async (req, res, next) => {
   const { id_pengadu } = req.params;
+  console.log(id_pengadu);
   try {
     const data = await db(tableName.pengaduan)
       .select(
@@ -64,8 +65,8 @@ const GetPengaduanByPengadu = async (req, res, next) => {
         `${tableName.pengaduan}.balasan`,
         `${tableName.pengaduan}.foto`,
         `${tableName.pengaduan}.status`,
+        `${tableName.pengaduan}.nim`,
         `${tableName.prodi}.nama_prodi`,
-        `${tableName.mahasiswa}.nim`,
         `${tableName.mahasiswa}.nama`
       )
       .join(
@@ -88,7 +89,7 @@ const GetPengaduanByPengadu = async (req, res, next) => {
         `${tableName.pengaduan}.id_kategori`,
         `${tableName.kategori}.id`
       )
-      .where({ nim: id_pengadu });
+      .where(`${tableName.pengaduan}.nim`, id_pengadu);
     return WebResponse(res, 200, "Success", data);
   } catch (error) {
     return next(error);
