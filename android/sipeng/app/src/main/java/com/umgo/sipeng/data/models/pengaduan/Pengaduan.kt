@@ -5,7 +5,7 @@ data class Pengaduan(
     val tgl_pengaduan: String,
     val id_kategori: Int,
     val id_fakultas: Int,
-    val id_pengadu: Int,
+    val nim: String,
     val keterangan: String,
     val nama_fakultas: String,
     val kategori: String,

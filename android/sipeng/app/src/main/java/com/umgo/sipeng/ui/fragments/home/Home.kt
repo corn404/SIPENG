@@ -170,7 +170,7 @@ class Home : Fragment(), UploadRequestBody.UploadCallback {
 
 
                 pengaduanViewModel.kirimPengaduan(
-                    ID_KATEGORI.toInt(), sharedUsers.id_prodi!!.toInt(), sharedUsers.id_mahasiswa!!.toInt(), et_deskripsi.text.toString(),
+                    ID_KATEGORI.toInt(), sharedUsers.id_prodi!!.toInt(), sharedUsers.nim.toString(), et_deskripsi.text.toString(),
                     MultipartBody.Part.createFormData("foto", filename, requestFile)
                 )
                 pengaduanViewModel.listenMessage().observe(viewLifecycleOwner, Observer {
