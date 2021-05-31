@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.umgo.sipeng.R
 import com.umgo.sipeng.data.adapter.PengaduanAdapter
 import com.umgo.sipeng.data.utils.SharedUsers
 import com.umgo.sipeng.data.viewmodel.PengaduanViewModel
@@ -39,7 +38,7 @@ class Pengaduan : Fragment() {
             adapter = pengaduanAdapter
         }
 
-        pengaduanViewModel.getPengaduan(sharedUsers.id_mahasiswa!!.toInt())
+        pengaduanViewModel.getPengaduan(sharedUsers.nim!!)
         pengaduanViewModel.listenPengaduan().observe(viewLifecycleOwner, Observer {
             rv_pengaduan.adapter.let { a ->
                 if(a is PengaduanAdapter) {

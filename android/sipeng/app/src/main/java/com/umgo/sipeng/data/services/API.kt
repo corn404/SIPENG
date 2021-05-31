@@ -35,7 +35,7 @@ interface API {
 
 
     @GET("pengaduan/pengadu/{id_pengadu}")
-    fun getPengaduan(@Path("id_pengadu") id_pengadu: Int) : Call<PengaduanListResponse>
+    fun getPengaduan(@Path("id_pengadu") id_pengadu: String) : Call<PengaduanListResponse>
 
     @Multipart
     @PUT("mahasiswa")

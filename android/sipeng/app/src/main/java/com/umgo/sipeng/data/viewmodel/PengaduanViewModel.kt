@@ -12,7 +12,6 @@ import com.umgo.sipeng.data.models.pengaduan.PengaduanListResponse
 import com.umgo.sipeng.data.models.pengaduan.PengaduanResponse
 import com.umgo.sipeng.data.services.API
 import kotlinx.coroutines.launch
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -122,7 +121,7 @@ class PengaduanViewModel : ViewModel() {
 
 
 
-    fun getPengaduan(id_pengadu: Int) {
+    fun getPengaduan(id_pengadu: String) {
         viewModelScope.launch {
             API().getPengaduan(id_pengadu).enqueue(object : Callback<PengaduanListResponse> {
                 override fun onResponse(
