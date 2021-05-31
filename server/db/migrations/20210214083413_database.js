@@ -51,7 +51,7 @@ exports.up = async (knex) => {
       table.dateTime("tgl_pengaduan").notNullable();
       table.integer("id_kategori").notNullable();
       table.integer("id_prodi").notNullable();
-      table.integer("id_pengadu").notNullable();
+      table.string("nim", 100).notNullable();
       table.text("keterangan").nullable();
       table.text("balasan").nullable();
       table.text("foto").notNullable();

@@ -31,6 +31,8 @@ const Pengaduan = () => {
 
   const columns = [
     { key: "no", label: "NO", _style: { width: "50px" } },
+    { key: "nim", label: "NIM", _style: { width: "100px" } },
+    { key: "nama", label: "NAMA MAHASISWA" },
     { key: "kategori", label: "KATEGORI", _style: { width: "200px" } },
     { key: "nama_fakultas", label: "FAKULTAS", _style: { width: "200px" } },
     { key: "nama_prodi", label: "PRODI", _style: { width: "200px" } },

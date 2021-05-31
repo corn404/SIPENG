@@ -17,7 +17,14 @@ const GetPengaduan = async (req, res, next) => {
         `${tableName.pengaduan}.balasan`,
         `${tableName.pengaduan}.foto`,
         `${tableName.pengaduan}.status`,
-        `${tableName.prodi}.nama_prodi`
+        `${tableName.prodi}.nama_prodi`,
+        `${tableName.mahasiswa}.nim`,
+        `${tableName.mahasiswa}.nama`
+      )
+      .join(
+        tableName.mahasiswa,
+        `${tableName.pengaduan}.nim`,
+        `${tableName.mahasiswa}.nim`
       )
       .join(
         tableName.prodi,
@@ -57,7 +64,14 @@ const GetPengaduanByPengadu = async (req, res, next) => {
         `${tableName.pengaduan}.balasan`,
         `${tableName.pengaduan}.foto`,
         `${tableName.pengaduan}.status`,
-        `${tableName.prodi}.nama_prodi`
+        `${tableName.prodi}.nama_prodi`,
+        `${tableName.mahasiswa}.nim`,
+        `${tableName.mahasiswa}.nama`
+      )
+      .join(
+        tableName.mahasiswa,
+        `${tableName.pengaduan}.nim`,
+        `${tableName.mahasiswa}.nim`
       )
       .join(
         tableName.prodi,
@@ -74,7 +88,7 @@ const GetPengaduanByPengadu = async (req, res, next) => {
         `${tableName.pengaduan}.id_kategori`,
         `${tableName.kategori}.id`
       )
-      .where({ id_pengadu });
+      .where({ nim: id_pengadu });
     return WebResponse(res, 200, "Success", data);
   } catch (error) {
     return next(error);
@@ -96,7 +110,14 @@ const GetPengaduanByFakultas = async (req, res, next) => {
         `${tableName.pengaduan}.balasan`,
         `${tableName.pengaduan}.foto`,
         `${tableName.pengaduan}.status`,
-        `${tableName.prodi}.nama_prodi`
+        `${tableName.prodi}.nama_prodi`,
+        `${tableName.mahasiswa}.nim`,
+        `${tableName.mahasiswa}.nama`
+      )
+      .join(
+        tableName.mahasiswa,
+        `${tableName.pengaduan}.nim`,
+        `${tableName.mahasiswa}.nim`
       )
       .join(
         tableName.prodi,
@@ -121,13 +142,13 @@ const GetPengaduanByFakultas = async (req, res, next) => {
 };
 
 const CreatePengaduan = async (req, res, next) => {
-  const { id_kategori, id_prodi, id_pengadu, keterangan } = req.body;
+  const { id_kategori, id_prodi, nim, keterangan } = req.body;
   try {
     await db(tableName.pengaduan).insert({
       tgl_pengaduan: moment().format("yyyy-MM-DD"),
       id_kategori,
       id_prodi,
-      id_pengadu,
+      nim,
       keterangan,
       foto: req.file.filename,
     });
