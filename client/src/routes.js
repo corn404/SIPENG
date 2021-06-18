@@ -1,5 +1,6 @@
 import React from "react";
 
+const Dashboard = React.lazy(() => import("./pages/dashboard/Dashboard"));
 const Pengaduan = React.lazy(() => import("./pages/pengaduan/index"));
 const Kategori = React.lazy(() => import("./pages/kategori/index"));
 const Fakultas = React.lazy(() => import("./pages/fakultas/index"));
@@ -9,6 +10,7 @@ const Akun = React.lazy(() => import("./pages/akun/index"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
+  { path: "/dashboard", name: "Dashboard", component: Dashboard },
   { path: "/pengaduan", name: "Pengaduan", component: Pengaduan },
   { path: "/admin/kategori", name: "Kategori", component: Kategori },
   { path: "/admin/fakultas", name: "Fakultas", component: Fakultas },

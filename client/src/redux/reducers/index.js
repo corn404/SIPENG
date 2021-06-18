@@ -7,6 +7,7 @@ import Kategori from "./kategori";
 import Mahasiswa from "./mahasiswa";
 import Pengaduan from "./pengaduan";
 import Prodi from "./prodi";
+import Info from "./Info";
 
 export default combineReducers({
   app: App,
@@ -17,4 +18,5 @@ export default combineReducers({
   mahasiswa: Mahasiswa,
   pengaduan: Pengaduan,
   prodi: Prodi,
+  info: Info,
 });

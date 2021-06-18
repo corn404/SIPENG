@@ -4,6 +4,7 @@ const MahasiswaController = require("./MahasiswaController");
 const PengaduanController = require("./PengaduanController");
 const AuthController = require("./AuthController");
 const ProdiController = require("./ProdiController");
+const InfoController = require("./InfoController");
 
 module.exports = {
   KategoriController,
@@ -12,4 +13,5 @@ module.exports = {
   PengaduanController,
   AuthController,
   ProdiController,
+  InfoController,
 };

@@ -7,5 +7,6 @@ route.use("/mahasiswa", require("./mahasiswa"));
 route.use("/pengaduan", require("./pengaduan"));
 route.use("/prodi", require("./prodi"));
 route.use("/auth", require("./auth"));
+route.use("/info", require("./info"));
 
 module.exports = route;

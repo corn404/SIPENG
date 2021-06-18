@@ -25,6 +25,9 @@ export const GET_PENGADUAN = "GET_PENGADUAN";
 // prodi
 export const GET_PRODI = "GET_PRODI";
 
+// info
+export const GET_INFO = "GET_INFO";
+
 export const Message = Swal.mixin({
   toast: true,
   position: "top-end",

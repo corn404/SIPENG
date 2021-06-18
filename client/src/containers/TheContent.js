@@ -39,6 +39,7 @@ const TheContent = () => {
                     )
                   );
                 })}
+                <Redirect from="/" to="/dashboard" />
               </>
             ) : (
               <>
@@ -59,10 +60,9 @@ const TheContent = () => {
                     )
                   );
                 })}
+                <Redirect from="/" to="/dashboard" />
               </>
             )}
-
-            <Redirect from="/" to="/pengaduan" />
           </Switch>
         </Suspense>
       </CContainer>

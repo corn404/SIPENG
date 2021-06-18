@@ -1,4 +1,5 @@
 import React from "react";
+import { FaChartPie } from "react-icons/fa";
 import { IoAccessibilityOutline, IoNewspaperOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
@@ -14,6 +15,12 @@ const Pengaduan = () => {
 };
 
 const _nav = [
+  {
+    _tag: "CSidebarNavItem",
+    name: "Dashboard",
+    to: "/dashboard",
+    icon: <FaChartPie className="c-sidebar-nav-icon" />,
+  },
   {
     _tag: "CSidebarNavItem",
     name: "Pengaduan",
