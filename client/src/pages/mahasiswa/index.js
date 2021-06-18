@@ -9,6 +9,7 @@ import {
   CDataTable,
 } from "@coreui/react";
 import { IoEye, IoReload, IoTrash } from "react-icons/io5";
+import { FaFileExcel } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -19,9 +20,11 @@ import {
 import ModalTambah from "./ModelTambah";
 import ModalInfo from "./ModalInfo";
 import { Message } from "src/redux/actions";
+import ModalImport from "./ModalImport";
 
 const Mahasiswa = () => {
   const [modal, setModal] = useState(false);
+  const [modalImport, setModalImport] = useState(false);
   const [modalInfo, setModalInfo] = useState(false);
   const [item, setItem] = useState(null);
   const dataMahasiswa = useSelector((x) => x.mahasiswa.data);
@@ -115,13 +118,19 @@ const Mahasiswa = () => {
               </h4>
             </CCol>
             <CCol sm="7" className="d-none d-md-block">
-              <CButton
-                color="primary"
-                className="float-right"
-                onClick={() => setModal(!modal)}
-              >
-                Tambah
-              </CButton>
+              <div className="float-right">
+                <CButton
+                  color="success"
+                  style={{ marginRight: 10 }}
+                  onClick={() => setModalImport(!modalImport)}
+                >
+                  <FaFileExcel style={{ marginRight: 10 }} />
+                  Import data
+                </CButton>
+                <CButton color="primary" onClick={() => setModal(!modal)}>
+                  Tambah
+                </CButton>
+              </div>
             </CCol>
           </CRow>
         </CCardHeader>
@@ -180,6 +189,7 @@ const Mahasiswa = () => {
       </CCard>
       <ModalTambah modal={modal} setModal={setModal} />
       <ModalInfo modal={modalInfo} setModal={setModalInfo} item={item} />
+      <ModalImport modal={modalImport} setModal={setModalImport} item={[]} />
     </>
   );
 };

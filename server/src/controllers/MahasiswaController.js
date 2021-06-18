@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const importExcell = require("convert-excel-to-json");
 const db = require("../../db");
 const tableName = require("../../db/constant/tableName");
 const WebResponse = require("../utils/WebResponse");
@@ -227,6 +228,95 @@ const updateMahasiswa = async (req, res, next) => {
   }
 };
 
+const ImportFile = async (req, res, next) => {
+  const { prodi } = req.body;
+  var salt = bcrypt.genSaltSync(12);
+  const filename = req.file.filename;
+  const dataImport = importExcell({
+    sourceFile: __dirname + "/../public/uploads/import/" + filename,
+    header: { rows: 1 },
+    columnToKey: {
+      A: "NIM",
+      B: "NAMA_LENGKAP",
+      C: "KELAMIN",
+      D: "ALAMAT",
+    },
+    sheets: ["Sheet1"],
+  });
+
+  const DATA = dataImport.Sheet1.map((x) => {
+    return {
+      nim: x.NIM,
+      nama: x.NAMA_LENGKAP,
+      kelamin: x.KELAMIN,
+      alamat: x.ALAMAT,
+      id_prodi: prodi,
+    };
+  });
+
+  return db.transaction((trx) => {
+    var queries = [];
+    DATA.map((x) => {
+      const query = db(tableName.mahasiswa)
+        .insert(x)
+        .transacting(trx)
+        .then((result) => {
+          const password = bcrypt.hashSync(x.nim, salt);
+          db(tableName.users)
+            .transacting(trx)
+            .insert({
+              nama_lengkap: x.nama,
+              username: x.nim,
+              password: password,
+              role: "mahasiswa",
+              id_pengguna: result[0],
+            })
+            .transacting(trx)
+            .then((usersres) => console.log("Success"));
+        });
+      queries.push(query);
+    });
+
+    return Promise.all(queries)
+      .then(() => {
+        trx.commit;
+        return WebResponse(res, 200, "Success");
+      })
+      .catch((err) => {
+        trx.rollback;
+        return next(err);
+      });
+  });
+};
+
+// const importData = async (req, res, next) => {
+
+//   return db.transaction((trx) => {
+//     var queries = [];
+//     DATA.map((x) => {
+//       const query = db(tableName.stok_toko)
+//         .where({ id: x.id })
+//         .update({ harga_jual: x.harga_jual })
+//         .increment({ stok_akhir: x.stok_akhir })
+//         .transacting(trx);
+//       queries.push(query);
+//     });
+
+//     return Promise.all(queries)
+//       .then(async () => {
+//         await trx.commit;
+//         await del([__dirname + "/../public/uploads/stok/*.xlsx"], {
+//           dryRun: true,
+//         });
+//         return WebResponse(res, 201, "Success");
+//       })
+//       .catch((e) => {
+//         trx.rollback;
+//         return next(e);
+//       });
+//   });
+// };
+
 module.exports = {
   GetMahasiswa,
   CreateMahasiswa,
@@ -235,4 +325,5 @@ module.exports = {
   GetMahasiswaByFakultas,
   HapusMahasiswa,
   updateMahasiswa,
+  ImportFile,
 };

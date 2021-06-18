@@ -16,8 +16,16 @@ import {
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import Swal from "sweetalert2";
+import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { LoginUser } from "src/redux/actions/users";
+import Bg from "../../assets/img/background.jpg";
+
+const LoginContainer = styled.div`
+  background-image: url(${Bg});
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -43,7 +51,7 @@ const Login = () => {
   };
 
   return (
-    <div className="c-app c-default-layout flex-row align-items-center">
+    <LoginContainer className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md="8">
@@ -114,7 +122,7 @@ const Login = () => {
           </CCol>
         </CRow>
       </CContainer>
-    </div>
+    </LoginContainer>
   );
 };
 

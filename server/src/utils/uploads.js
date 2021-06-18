@@ -1,6 +1,22 @@
 const moment = require("moment");
 const multer = require("multer");
 
+const storageImport = multer.diskStorage({
+  destination: function (req, file, done) {
+    console.log(__dirname);
+    done(null, "src/public/uploads/import/");
+  },
+
+  filename: function (req, file, done) {
+    done(
+      null,
+      `${moment().format("yyyyMMDD_HHmmss")}_${file.originalname}`
+        .split(" ")
+        .join("_")
+    );
+  },
+});
+
 const storagePengaduan = multer.diskStorage({
   destination: function (req, file, done) {
     console.log(__dirname);
@@ -31,6 +47,15 @@ const filterFile = (req, file, done) => {
   }
 };
 
+const uploadFileImport = multer({
+  //   dest: "src/public/uploads/",
+  storage: storageImport,
+  limits: {
+    fileSize: 1024 * 1024 * 10,
+  },
+  // fileFilter: filterFile,
+});
+
 const uploadPengaduan = multer({
   //   dest: "src/public/uploads/",
   storage: storagePengaduan,
@@ -52,4 +77,5 @@ const uploadProfile = multer({
 module.exports = {
   uploadPengaduan,
   uploadProfile,
+  uploadFileImport,
 };
